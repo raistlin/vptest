@@ -44,11 +44,12 @@ twig:
 doctrine:
     dbal:
         driver:   pdo_mysql
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
+        url:      "%database_url%"
+        #host:     "%database_host%"
+        #port:     "%database_port%"
+        #dbname:   "%database_name%"
+        #user:     "%database_user%"
+        #password: "%database_password%"
         charset:  UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
@@ -69,3 +70,15 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# CORS
+nelmio_cors:
+    defaults:
+        allow_credentials: true
+        allow_origin:  ["http://run.plnkr.co", "http://localhost:63342"]
+        allow_methods: ["POST", "PUT", "GET", "DELETE", "OPTIONS"]
+        allow_headers: ["content-type", "authorization"]
+        max_age:       3600
+    paths:
+        '^/': ~
+

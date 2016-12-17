@@ -119,7 +119,7 @@ class ProductControllerTest extends WebTestCase
 
         $pid = $this->products[0]->getId();
 
-        $client->request('POST', '/product/'.$pid.'/edit', $form);
+        $client->request('POST', '/product/'.$pid, $form);
 
         $this->assertContains('"name":"Third Product"', $client->getResponse()->getContent());
         $this->assertContains('"price":12.32', $client->getResponse()->getContent());
